@@ -1,4 +1,4 @@
-<div class="container mx-auto p-8 max-w-4xl bg-white shadow-md rounded-lg">
+<div class="container mx-auto p-8 max-w-7xl bg-white shadow-md rounded-lg">
     <h1 class="mb-4 text-2xl font-semibold text-center">Product</h1>
 
     <div class="flex justify-between mb-4">
@@ -13,7 +13,7 @@
                 <th class="border border-gray-300 px-4 py-2">No</th>
                 <th class="border border-gray-300 px-4 py-2">Nama Product</th>
                 <th class="border border-gray-300 px-4 py-2">Deskripsi</th>
-                <th class="border border-gray-300 px-4 py-2">Jumlah Produk</th>
+                <th class="border border-gray-300 px-4 py-2" style="width: 5%">Jumlah Produk</th>
                 <th class="border border-gray-300 px-4 py-2">Harga</th>
                 <th class="border border-gray-300 px-4 py-2">Kategori</th>
                 <th class="border border-gray-300 px-4 py-2">Gambar</th>
@@ -26,15 +26,20 @@
                     <td class="border border-gray-300 px-4 py-2">{{ $loop->iteration }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $product->name }}</td>
                     <td class="border border-gray-300 px-4 py-2">{!! $product->deskripsi !!}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $product->jumlah }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $product->harga }}</td>
+                    <td class="border text-center border-gray-300 px-4 py-2">{{ $product->jumlah }}</td>
+                    <td class="border border-gray-300 px-4 py-2">Rp. {{ number_format($product->harga) }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $product->kategori->name ?? 'N/A' }}</td>
-                    <td class="border border-gray-300 text-center px-4 py-2">
+                    <td class="border flex justify-center border-gray-300 text-center px-4 py-2">
                         <img src="{{ Storage::url($product->image) }}" class="rounded" style="width: 150px">
                     </td>
                     <td class="border border-gray-300 text-center px-4 py-2">
-                        <button wire:click="$dispatch('productEdit', {product: {{ $product->id }}})" class="bg-yellow-500 text-white rounded px-2 py-1">Update</button>
-                        <button @click="$dispatch('product-delete', {get_id: '{{ $product->id }}' })" class="bg-red-500 text-white rounded px-2 py-1">DELETE</button>
+                        <button wire:click="$dispatch('productEdit', {product: {{ $product->id }}})" class="bg-yellow-500 text-white rounded px-2 py-1 hover:bg-yellow-600">
+                            <i class="fas fa-pencil-alt mr-1"></i> Update
+                        </button>
+
+                        <button @click="$dispatch('product-delete', {get_id: '{{ $product->id }}' })" class="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600">
+                            <i class="fas fa-trash-alt mr-1"></i> Delete
+                        </button>
                     </td>
                 </tr>
             @empty

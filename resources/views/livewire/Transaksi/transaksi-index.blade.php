@@ -36,7 +36,9 @@
                         <td class="py-2 px-4">{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d-m-Y') }}</td>
                         <td class="py-2 px-4">{{ number_format($transaksi->details->sum('total'), 2) }}</td>
                         <td class="py-2 text-center px-4">
-                            <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 text-sm" @click="$dispatch('transaksi-delete', { get_id: {{ $transaksi->id }} })">Delete</button>
+                            <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 text-sm" @click="$dispatch('transaksi-delete', { get_id: {{ $transaksi->id }} })">
+                                <i class="fas fa-trash-alt mr-1"></i> Delete
+                            </button>
                         </td>
                     </tr>
                 @endforeach
@@ -55,7 +57,6 @@
         <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-auto">
             <div class="px-6 py-4 border-b">
                 <h2 class="text-lg font-semibold">Detail Transaksi</h2>
-                <button class="absolute top-2 right-2" @click="openModal = false">✖</button>
             </div>
             <div class="px-6 py-4">
                 @if($selectedTransaksi)

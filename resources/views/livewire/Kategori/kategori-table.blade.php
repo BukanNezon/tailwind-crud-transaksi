@@ -13,7 +13,7 @@
             <tr>
                 <th scope="col" class="py-2 border border-gray-300">No</th>
                 <th scope="col" class="py-2 border border-gray-300 text-center" style="width: 70%">Nama Kategori</th>
-                <th scope="col" class="py-2 border border-gray-300 text-center" style="width: 15%">Actions</th>
+                <th scope="col" class="py-2 border border-gray-300 text-center" style="width: 25%">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +22,13 @@
                     <td class="py-2 text-center border border-gray-300">{{ $loop->iteration }}</td>
                     <td class="py-2 text-center border border-gray-300 truncate" style="max-width: 150px;">{{ $category->name }}</td>
                     <td class="text-center py-2 border border-gray-300">
-                        <button wire:click="$dispatch('kategoriEdit', {kategori: {{ $category->id }}})" class="bg-yellow-500 text-white rounded px-2 py-1 hover:bg-yellow-600">Update</button>
-                        <button @click="$dispatch('product-delete', {get_id: '{{ $category->id }}' })" class="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600">DELETE</button>
+                        <button wire:click="$dispatch('kategoriEdit', {kategori: {{ $category->id }}})" class="bg-yellow-500 text-white rounded px-2 py-1 hover:bg-yellow-600">
+                            <i class="fas fa-pencil-alt mr-1"></i> Update
+                        </button>
+
+                        <button @click="$dispatch('product-delete', {get_id: '{{ $category->id }}' })" class="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600">
+                            <i class="fas fa-trash-alt mr-1"></i> Delete
+                        </button>
                     </td>
                 </tr>
                 @empty

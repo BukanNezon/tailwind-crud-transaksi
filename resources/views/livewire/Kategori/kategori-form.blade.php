@@ -1,7 +1,7 @@
 <div x-data="{ open: false }">
     <div class="flex justify-center">
         <!-- Button trigger modal -->
-        <button type="button" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded" @click="open = true">
+        <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded" @click="open = true">
             Tambah Product
         </button>
     </div>

@@ -32,7 +32,7 @@
                     <!-- CKEDITOR -->
                     <div wire:ignore x-data="{ deskripsi: $wire.entangle('deskripsi') }" wire:key="editor_edit"
                         @set-deskripsi.window="product_deskripsi_edit.setData(event.detail.deskripsi)">
-                        <label for="deskripsi" class="form-label fw-bold">Deskripsi</label>
+                        <label for="deskripsi" class="form-label fw-bold font-bold">Deskripsi</label>
                         <textarea wire:model="deskripsi" x-model="deskripsi" id="deskripsi_edit" class="form-control @error('deskripsi') is-invalid @enderror"></textarea>
                         @error('deskripsi')
                         <div class="invalid-feedback">
@@ -42,6 +42,7 @@
                     </div>
 
                     <div class="mb-4">
+                        <br>
                         <label for="jumlah" class="block font-bold">Jumlah Produk</label>
                         <input type="number" class="mt-1 block w-full border @error('jumlah') border-red-500 @enderror rounded p-2" id="jumlah" wire:model="jumlah">
                         @error('jumlah')
