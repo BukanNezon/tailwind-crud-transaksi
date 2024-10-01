@@ -14,6 +14,7 @@ class TransaksiIndex extends Component
     public $search = '';
     public $selectedTransaksi = null;
     public $paginate = 5;
+    public $detail_id;
 
     protected $queryString = ['search'];
 
@@ -30,6 +31,12 @@ class TransaksiIndex extends Component
         return view('livewire.transaksi.transaksi-index', [
             'transaksis' => $transaksis,
         ]);
+    }
+
+    public function load_data($id)
+    {
+        $transaksi = Transaksi::with('details.product')->find($id);
+        $this->detail_id = $transaksi->id;
     }
 
     public function loadTransaksi($transaksiId)

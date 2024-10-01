@@ -58,6 +58,7 @@
             <div class="px-6 py-4 border-b">
                 <h2 class="text-lg font-semibold">Detail Transaksi</h2>
             </div>
+
             <div class="px-6 py-4">
                 @if($selectedTransaksi)
                     <p><strong>Invoice:</strong> {{ $selectedTransaksi->invoice }}</p>
@@ -92,6 +93,11 @@
             <div class="px-6 py-4 border-t flex justify-between">
                 <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600" @click="openModal = false">Close</button>
             </div>
+            @if ($this->detail_id)
+                <a href="{{ route('print-struk', $this->detail_id) }}" class="btn btn-primary">
+                    Cetak Struk
+                </a>
+            @endif
         </div>
     </div>
 </div>
